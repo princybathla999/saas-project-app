@@ -3,6 +3,7 @@ require_relative 'application'
 
 # Initialize the Rails application.
 Rails.application.initialize!
+=begin
 ActionMailer::Base.smtp_settings = {
 
     :address => 'smtp.sendgrid.net',
@@ -20,3 +21,4 @@ ActionMailer::Base.smtp_settings = {
     :enable_starttls_auto => true
 
 }
+=end
