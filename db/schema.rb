@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511191156) do
+ActiveRecord::Schema.define(version: 20170511202142) do
+
+  create_table "artifacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "key"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_artifacts_on_project_id", using: :btree
+  end
 
   create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "tenant_id"
@@ -83,6 +92,7 @@ ActiveRecord::Schema.define(version: 20170511191156) do
     t.index ["tenant_id"], name: "index_users_on_tenant_id", using: :btree
   end
 
+  add_foreign_key "artifacts", "projects"
   add_foreign_key "members", "tenants"
   add_foreign_key "projects", "tenants"
   add_foreign_key "tenants", "tenants"
