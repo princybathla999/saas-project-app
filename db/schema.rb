@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512181803) do
+ActiveRecord::Schema.define(version: 20170512184608) do
 
   create_table "artifacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 20170512181803) do
     t.index ["tenant_id", "user_id"], name: "index_tenants_users_on_tenant_id_and_user_id", using: :btree
   end
 
+  create_table "user_projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_user_projects_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                        default: "",    null: false
     t.string   "encrypted_password",           default: "",    null: false
@@ -107,4 +116,5 @@ ActiveRecord::Schema.define(version: 20170512181803) do
   add_foreign_key "payments", "tenants"
   add_foreign_key "projects", "tenants"
   add_foreign_key "tenants", "tenants"
+  add_foreign_key "user_projects", "projects"
 end
