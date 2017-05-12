@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
     :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'aws-sdk'
+gem 'stripe'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
