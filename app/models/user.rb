@@ -8,4 +8,11 @@ class User < ApplicationRecord
   has_one :member, :dependent => :destroy
   has_one :payment
   accepts_nested_attributes_for :payment
+
+
+  def is_admin?
+
+    is_admin
+
+  end
 end
